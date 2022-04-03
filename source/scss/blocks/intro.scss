@@ -95,7 +95,7 @@
   line-height: 1.27;
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity ease-in 0.3s, transform ease-in 0.3s;
+  transition: opacity 0.3s ease-in, transform 0.3s ease-in;
 
   @media (min-width: $stop-scaling) {
     width: 509px;

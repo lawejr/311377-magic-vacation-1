@@ -17,7 +17,7 @@
   height: 4rem;
   color: $c-dark;
   border-radius: 50%;
-  transition: color ease-in 0.35s;
+  transition: color 0.35s ease-in;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     display: none;
@@ -37,10 +37,10 @@
     border: 2px solid $c-light;
     z-index: -1;
     transition:
-      width ease-in 0.35s,
-      height ease-in 0.35s,
-      border-color ease-in 0.35s,
-      background-color ease-in 0.35s;
+      width 0.35s ease-in,
+      height 0.35s  ease-in,
+      border-color 0.35s ease-in,
+      background-color 0.35s ease-in;
   }
 
   svg {
@@ -148,7 +148,7 @@
     opacity: 0;
     flex: none;
     margin-bottom: 0.5rem;
-    transition: opacity ease-in 0.2s;
+    transition: opacity 0.2s ease-in;
 
     &:nth-child(2) {
       transition-delay: 0.15s;
