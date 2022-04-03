@@ -43,6 +43,8 @@
   border: 0;
   border-radius: 3rem;
   outline: none;
+  opacity: 0;
+  transform: scaleX(0);
 
   &:focus {
     border: 1px solid $c-purple;
@@ -144,5 +146,14 @@
     @media (max-width: $mobile) and (orientation: landscape) {
       width: calc(100% - 5rem);
     }
+  }
+}
+
+.screen--game.active {
+  .form__field {
+    opacity: 1;
+    transform: scaleX(1);
+    transition: transform 0.35s ease-in, opacity 0.15s ease-in 0.1s;
+    transform-origin: right;
   }
 }
