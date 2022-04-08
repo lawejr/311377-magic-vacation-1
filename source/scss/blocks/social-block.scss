@@ -140,6 +140,16 @@
 
     li {
       opacity: 1;
+      transform: translateY(0);
+      transition: transform 0.2s ease-in, opacity 0.2s ease-in;
+
+      &:nth-child(2) {
+        transition-delay: 0.1s;
+      }
+
+      &:nth-child(3) {
+        transition-delay: 0.2s;
+      }
     }
   }
 
@@ -147,15 +157,7 @@
     opacity: 0;
     flex: none;
     margin-bottom: 0.5rem;
-    transition: opacity 0.2s ease-in;
-
-    &:nth-child(2) {
-      transition-delay: 0.15s;
-    }
-
-    &:nth-child(3) {
-      transition-delay: 0.3s;
-    }
+    transform: translateY(7px);
 
     @media (min-width: $stop-scaling) {
       margin-bottom: 5px;
