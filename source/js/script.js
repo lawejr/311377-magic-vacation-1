@@ -19,5 +19,8 @@ result();
 form();
 social();
 
+window.addEventListener(`load`, function () {
+});
+
 const fullPageScroll = new FullPageScroll();
 fullPageScroll.init();
