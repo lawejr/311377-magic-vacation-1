@@ -270,7 +270,7 @@
       background-color: $c-light;
       left: 0;
       transform: scaleX(0);
-      transition: background-color 0.3s ease-in, transform 0.35s ease-in;
+      transition: background-color 0.3s ease-in, transform 0.4s ease-in;
       transform-origin: right;
 
       @media (max-width: $tablet) and (orientation: portrait) {
@@ -286,12 +286,6 @@
       }
     }
 
-    &.active {
-      &::after {
-        transform: scaleX(1);
-      }
-    }
-
     &:hover,
     &:focus {
       color: $c-purple;
@@ -302,6 +296,17 @@
         background-color: $c-purple;
         transform: scaleX(1);
         transform-origin: left;
+      }
+    }
+
+    @at-root {
+      .js-ready & {
+        &.active {
+          &::after {
+            transform-origin: left;
+            transform: scaleX(1);
+          }
+        }
       }
     }
   }
