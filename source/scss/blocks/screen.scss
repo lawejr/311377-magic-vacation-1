@@ -48,6 +48,7 @@
   z-index: 1;
   transform: translate(0, 100%);
   opacity: 0;
+  transition: opacity 0.2s $init-animation-time, transform 0.35s $init-animation-time;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     width: 3.5rem;
@@ -70,6 +71,13 @@
     &.screen__footer--full {
       width: 100%;
       height: 16rem;
+    }
+  }
+
+  @at-root {
+    .js-ready & {
+      opacity: 1;
+      transform: translate(0);
     }
   }
 }

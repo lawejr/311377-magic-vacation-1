@@ -20,6 +20,7 @@ form();
 social();
 
 window.addEventListener(`load`, function () {
+  document.body.classList.add(`js-ready`);
 });
 
 const fullPageScroll = new FullPageScroll();

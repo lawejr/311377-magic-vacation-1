@@ -37,6 +37,7 @@
   color: $c-light;
   transform: translateX(-30%);
   opacity: 0;
+  transition: opacity 0.2s $init-animation-time, transform 0.35s $init-animation-time;
 
   @media (min-width: $stop-scaling) {
     top: -5px;
@@ -63,6 +64,13 @@
 
     .page-header--menu-opened & {
       color: $c-dark;
+    }
+  }
+
+  @at-root {
+    .js-ready & {
+      transform: translateX(0);
+      opacity: 1;
     }
   }
 
@@ -180,6 +188,7 @@
   line-height: 1.0418;
   color: $c-light;
   opacity: 0;
+  transition: opacity 0.35s $init-animation-time;
 
   @media (min-width: $stop-scaling) {
     font-size: 12px;
@@ -195,6 +204,12 @@
     margin: auto 0;
     font-size: 1.4rem;
     color: $c-dark;
+  }
+
+  @at-root {
+    .js-ready & {
+      opacity: 1;
+    }
   }
 
   ul {
