@@ -35,6 +35,9 @@
   padding: 1rem 0;
   width: 10rem;
   color: $c-light;
+  transform: translateX(-30%);
+  opacity: 0;
+  transition: opacity 0.2s $init-animation-time, transform 0.35s $init-animation-time;
 
   @media (min-width: $stop-scaling) {
     top: -5px;
@@ -61,6 +64,13 @@
 
     .page-header--menu-opened & {
       color: $c-dark;
+    }
+  }
+
+  @at-root {
+    .js-ready & {
+      transform: translateX(0);
+      opacity: 1;
     }
   }
 
@@ -177,6 +187,8 @@
   font-size: 1.2rem;
   line-height: 1.0418;
   color: $c-light;
+  opacity: 0;
+  transition: opacity 0.35s $init-animation-time;
 
   @media (min-width: $stop-scaling) {
     font-size: 12px;
@@ -192,6 +204,12 @@
     margin: auto 0;
     font-size: 1.4rem;
     color: $c-dark;
+  }
+
+  @at-root {
+    .js-ready & {
+      opacity: 1;
+    }
   }
 
   ul {
@@ -252,7 +270,7 @@
       background-color: $c-light;
       left: 0;
       transform: scaleX(0);
-      transition: background-color 0.3s ease-in, transform 0.35s ease-in;
+      transition: background-color 0.3s ease-in, transform 0.4s ease-in;
       transform-origin: right;
 
       @media (max-width: $tablet) and (orientation: portrait) {
@@ -268,12 +286,6 @@
       }
     }
 
-    &.active {
-      &::after {
-        transform: scaleX(1);
-      }
-    }
-
     &:hover,
     &:focus {
       color: $c-purple;
@@ -284,6 +296,17 @@
         background-color: $c-purple;
         transform: scaleX(1);
         transform-origin: left;
+      }
+    }
+
+    @at-root {
+      .js-ready & {
+        &.active {
+          &::after {
+            transform-origin: left;
+            transform: scaleX(1);
+          }
+        }
       }
     }
   }
