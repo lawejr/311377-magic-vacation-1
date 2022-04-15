@@ -37,7 +37,7 @@
     border: 2px solid $c-light;
     z-index: -1;
     transition:
-      transform 0.35s $init-animation-time,
+      transform 0.35s cubic-bezier(.6,-0.25,.34,1.51),
       border-color 0.35s ease-in,
       background-color 0.35s ease-in;
     transform: translate(-50%, -50%) scale(0);
