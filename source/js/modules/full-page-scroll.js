@@ -8,10 +8,13 @@ export default class FullPageScroll {
 
     this.screenElements = document.querySelectorAll(`.screen:not(.screen--result)`);
     this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
+    this.animationBgElement = document.querySelector(`.js-animation-bg`);
 
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
     this.onUrlHashChengedHandler = this.onUrlHashChanged.bind(this);
+    this.changePageDisplay = this.changePageDisplay.bind(this);
+    this.setDisplayClassnames = this.setDisplayClassnames.bind(this);
   }
 
   init() {
@@ -52,14 +55,22 @@ export default class FullPageScroll {
   }
 
   changeVisibilityDisplay() {
-    this.screenElements.forEach((screen) => {
-      screen.classList.add(`screen--hidden`);
-      screen.classList.remove(`active`);
-    });
-    this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
-    setTimeout(() => {
-      this.screenElements[this.activeScreen].classList.add(`active`);
-    }, 100);
+    const delay = this.screenElements[this.activeScreen].dataset.shownDelay || 0;
+
+    if (delay) {
+      const bgColor = this.screenElements[this.activeScreen].dataset.bgColor;
+
+      this.animationBgElement.style.setProperty(`--bg-animation-color`, bgColor);
+      this.animationBgElement.style.setProperty(`--bg-animation-duration`, delay);
+      this.animationBgElement.classList.add(`animation-bg--active`);
+
+      setTimeout(() => {
+        this.setDisplayClassnames();
+        this.animationBgElement.classList.remove(`animation-bg--active`);
+      }, parseInt(delay, 10));
+    } else {
+      this.setDisplayClassnames();
+    }
   }
 
   changeActiveMenuItem() {
@@ -88,5 +99,16 @@ export default class FullPageScroll {
     } else {
       this.activeScreen = Math.max(0, --this.activeScreen);
     }
+  }
+
+  setDisplayClassnames() {
+    this.screenElements.forEach((screen) => {
+      screen.classList.add(`screen--hidden`);
+      screen.classList.remove(`active`);
+    });
+    this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
+    setTimeout(() => {
+      this.screenElements[this.activeScreen].classList.add(`active`);
+    }, 100);
   }
 }

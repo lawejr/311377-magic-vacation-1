@@ -1,0 +1,17 @@
+.animation-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: var(--bg-animation-color);
+  transform: translateY(100%);
+
+  &--active {
+    transform: translateY(0);
+    transition-property: transform;
+    transition-timing-function: ease-in;
+    transition-duration: var(--bg-animation-duration);
+  }
+}
